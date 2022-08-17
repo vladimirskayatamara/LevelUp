@@ -1,0 +1,73 @@
+.newPrice{
+  font-family: 'Roboto';
+  font-size: 150px;
+  text-align:center;
+  perspective: 800px;
+  position:relative;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+
+  span {
+    display:inline-block;
+    margin-left:-40px;
+    color: $dark-purple;
+    transform-origin: 50% 70%;
+
+    &:nth-child(1){
+      animation: flipper 1s cubic-bezier(0.68, -0.55, 0.26, 1.55) both, fadeIn 1s both;
+      
+    }
+
+    &:nth-child(2){
+      animation: flipper 1s cubic-bezier(0.68, -0.55, 0.26, 1.55) .2s both, fadeIn 1s both;
+
+    }
+
+    &:nth-child(3){
+      animation: flipper 1s cubic-bezier(0.68, -0.55, 0.26, 1.55) .4s both, fadeIn 1s both;
+
+    }
+
+    &:nth-child(4){
+      animation: flipper 1s cubic-bezier(0.68, -0.55, 0.26, 1.55) .6s both, fadeIn 1s both;
+
+    }
+  }
+}
+
+@keyframes flipper{
+  from{transform: rotateX(90deg);}
+  to{transform: rotateX(0deg);}
+}
+
+@keyframes fadeIn{
+  from{opacity:0};
+  to{opacity:1};
+}
+
+.order-form {
+  .form {
+    max-width: 600px;
+    border-radius: 15px;
+    background-color: $medium-purple;
+    color: $white;
+    padding: 20px;
+
+    &__row {
+      @include flex-col;
+
+      &:not(:last-child) {
+        margin-bottom: 15px;
+      }
+
+      input {
+        border-radius: 5px;
+      }
+    }
+  }
+}
+
+@media screen {
+  
+}

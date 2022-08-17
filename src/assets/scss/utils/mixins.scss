@@ -1,0 +1,28 @@
+@function rem($px) {
+  @return ($px / 16) +rem;
+}
+
+@function calcsum($x, $y) {
+  @return ($x + $y) + px;
+}
+
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-space-btw {
+  display: flex;
+  justify-content: space-between;
+}
+
+@mixin flex-all-center {
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin h2-title {
+  font-size: $h2-title;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
