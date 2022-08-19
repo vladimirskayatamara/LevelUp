@@ -1,58 +1,61 @@
-.newPrice{
-  font-family: 'Roboto';
-  font-size: 150px;
-  text-align:center;
-  perspective: 800px;
-  position:relative;
-  top: 50%;
-  left:50%;
-  transform: translate(-50%, -50%);
+.order-form {
+  padding-top: 100px;
 
-  span {
-    display:inline-block;
-    margin-left:-40px;
-    color: $dark-purple;
-    transform-origin: 50% 70%;
+  .container {
+    @include flex-space-btw;
+  }
 
-    &:nth-child(1){
-      animation: flipper 1s cubic-bezier(0.68, -0.55, 0.26, 1.55) both, fadeIn 1s both;
-      
+  .order-ads {
+    &__subtitle {
+      font-size: 2.5rem;
+      color: $dark-text;
     }
 
-    &:nth-child(2){
-      animation: flipper 1s cubic-bezier(0.68, -0.55, 0.26, 1.55) .2s both, fadeIn 1s both;
-
+    &__oldprice {
+      text-decoration: line-through;
+      font-size: 1.5rem;
+      color: $dark-text;
     }
 
-    &:nth-child(3){
-      animation: flipper 1s cubic-bezier(0.68, -0.55, 0.26, 1.55) .4s both, fadeIn 1s both;
-
-    }
-
-    &:nth-child(4){
-      animation: flipper 1s cubic-bezier(0.68, -0.55, 0.26, 1.55) .6s both, fadeIn 1s both;
-
+    &__newprice {
+      color: $medium-purple;
+      font-size: 3rem;
     }
   }
-}
 
-@keyframes flipper{
-  from{transform: rotateX(90deg);}
-  to{transform: rotateX(0deg);}
-}
+  .info {
+    width: 30%;
 
-@keyframes fadeIn{
-  from{opacity:0};
-  to{opacity:1};
-}
+    &__timeCounter {
+      font-size: 2rem;
+      color: $medium-purple;
+    }
+  }
 
-.order-form {
   .form {
-    max-width: 600px;
     border-radius: 15px;
     background-color: $medium-purple;
     color: $white;
     padding: 20px;
+    width: 70%;
+
+    button {
+      width: 210px;
+      height: 50px;
+      border-radius: 25px;
+      color: $dark-purple;
+      background-color: #fff;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 36px;
+      margin-top: 35px;
+
+      &:hover {
+        color: #fff;
+        background-color: $dark-purple;
+        cursor: pointer;
+      }
+    }
 
     &__row {
       @include flex-col;
@@ -63,11 +66,57 @@
 
       input {
         border-radius: 5px;
+        height: 50px;
+        padding-left: 15px;
       }
+    }
+
+    .info,
+    .order-ads {
+      @include flex-col;
     }
   }
 }
 
-@media screen {
-  
+ .anim-text-flow,
+ .anim-text-flow-hover:hover {
+   $animationSteps: 20;
+   $animationDuration: 50;
+   $animationElement: span;
+   $animationElementsCount: 100;
+   $delayBetweenLetters: 0.2;
+   font-size: 3rem;
+ 
+   #{$animationElement} {
+     animation-name: anim-text-flow-keys;
+     animation-duration: #{$animationDuration}s;
+     animation-iteration-count: infinite;
+     animation-direction: alternate;
+     animation-fill-mode: forwards;
+   }
+   @keyframes anim-text-flow-keys {
+     @for $i from 0 through $animationSteps {
+       #{percentage($i * (1 / $animationSteps))} {
+         color: hsla(random(365), 60, 60, 1);
+       }
+     }
+   }
+   $totalDelayTime: $animationElementsCount * $delayBetweenLetters;
+ 
+   @for $i from 1 through $animationElementsCount {
+     #{$animationElement}:nth-of-type(#{$i}) {
+       animation-delay: #{($i * $delayBetweenLetters) - $totalDelayTime}s;
+     }
+   }
 }
+ 
+@media screen and (max-width: $tabletWidth) {
+  .order-form {
+    padding-top: 35px;
+    .info,
+    .form {
+      width: 100%;
+    }
+  }
+}
+

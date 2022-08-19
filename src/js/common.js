@@ -1,13 +1,9 @@
 // Инициализируем Swiper
 let myImageSlider = new Swiper(".image-slider", {
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
+
   pagination: {
     el: ".swiper-pagination",
 
-    // Буллеты
     type: "bullets",
     clickable: true,
   },
@@ -23,13 +19,9 @@ let myImageSlider = new Swiper(".image-slider", {
   },
 
   keyboard: {
-    enabled: true,
+    enabled: false,
     onlyInViewport: true,
     pageUpDown: true,
-  },
-
-  mousewheel: {
-    sensitivity: 1,
   },
 
   autoHeight: false,
@@ -42,18 +34,7 @@ let myImageSlider = new Swiper(".image-slider", {
   slidesPerColumn: 1,
   loop: true,
   loopedSlides: 0,
-
   freeMode: true,
-
-  /*
-	autoplay: {
-		delay: 1000,
-		stopOnLastSlide: false,
-		disableOnInteraction: true
-	},
-
-	speed: 800,*/
-
   direction: "horizontal",
   effect: "slide",
 
@@ -62,9 +43,13 @@ let myImageSlider = new Swiper(".image-slider", {
   breakpoints: {
     320: {
       slidesPerView: 1,
+      spaceBetween: 10,
     },
     700: {
       slidesPerView: 2,
+      mousewheel: {
+        sensitivity: 1,
+      },
     },
     1024: {
       slidesPerView: 3,
@@ -86,34 +71,32 @@ let myImageSlider = new Swiper(".image-slider", {
   },
 });
 
-// Set the date we're counting down to
+
 var countDownDate = new Date("Sep 5, 2022 15:37:25").getTime();
 
-// Update the count down every 1 second
 var x = setInterval(function() {
 
-    // Get todays date and time
     var now = new Date().getTime();
     
-    // Find the distance between now an the count down date
     var distance = countDownDate - now;
     
-    // Time calculations for days, hours, minutes and seconds
     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
     var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
     
-    // Output the result in an element with id="demo"
     document.getElementById("timeCounter").innerHTML = days + "d " + hours + "h "
     + minutes + "m " + seconds + "s ";
     
-    // If the count down is over, write some text 
     if (distance < 0) {
         clearInterval(x);
         document.getElementById("timeCounter").innerHTML = "EXPIRED";
     }
 }, 1000);
-  
 
 
+$('.txt').html(function(i, html) {
+  var chars = $.trim(html).split("");
+
+  return '<span>' + chars.join('</span><span>') + '</span>';
+});

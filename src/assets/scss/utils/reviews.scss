@@ -1,5 +1,12 @@
+.reviews {
+	&__title {
+		@include h2-title;
+		color: $dark-purple;
+	}
+}
+
 .image-slider {
-	padding: 30px 0 70px 0;
+	padding: 0 0 70px 0;
 
 	&__image {
 		text-align: center;
@@ -12,21 +19,13 @@
 	&__name {
 		color: $medium-purple;
 		font-size: 1.3em;
+		margin: 15px 0;
 	}
 
 	&__text {
 		font-style: italic;
 		font-weight: 400;
 	}
-
-
-}
-
-/* Стрелки */
-.image-slider .swiper-button-prev::after,
-.image-slider .swiper-button-next::after {
-	color: #fff;
-	font-size: 80px;
 }
 
 /* Пагинация */
@@ -40,6 +39,11 @@
 	height: 20px;
 	line-height: 20px;
 	font-size: 14px;
-	background-color: #fff;
+	background-color: $medium-purple;
 }
 
+@media screen and (max-width: $tabletWidth) {
+	.image-slider {
+		width: 100%;
+	}
+}

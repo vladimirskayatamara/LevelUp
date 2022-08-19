@@ -3,6 +3,7 @@
 	background-size: 400% 400%;
 	animation: gradient 15s ease infinite;
 	height: 100%;
+    padding-top: 100px;
 
     .container {
         @include flex-space-btw;
@@ -44,10 +45,11 @@
         border-radius: 25px;
         color: $white;
         background-color: $dark-purple;
-        text-transform: uppercase;
         font-weight: 700;
         font-size: 36px;
+        @include flex-all-center;
         margin-top: 35px;
+        font-family: $secondFont;
 
         &:hover {
             background-color: $medium-purple;

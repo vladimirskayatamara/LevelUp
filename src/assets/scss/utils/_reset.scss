@@ -17,6 +17,7 @@ time, mark, audio, video {
   font-size: 100%;
   vertical-align: baseline;
   font-family: $mainFont;
+  scroll-behavior: smooth;
 }
 
 // Links
@@ -88,10 +89,19 @@ section {
   margin: 0 auto;
 
   @media screen and (max-width: $smDesktopWidth) {
-      max-width: 950px;
+      max-width: $smDesktopWidth;
+      padding: 0 24px;
   }
 
   @media screen and (max-width: $tabletWidth) {
       max-width: calc(100% - 30px);
+      @include flex-col;
+      padding: 0;
+  }
+}
+
+@media screen and (min-width: $smDesktopWidth) and (max-width: $desktopWidth)  {
+  section {
+    padding: 0 24px 100px 24px;
   }
 }

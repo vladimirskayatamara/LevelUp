@@ -19,10 +19,16 @@
 @mixin flex-all-center {
   justify-content: center;
   align-items: center;
+  display: flex;
 }
 
 @mixin h2-title {
   font-size: $h2-title;
   text-transform: uppercase;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
+
+  @media screen and (max-width: $tabletWidth) {
+    font-size: 30px;
+  }
 }
+
